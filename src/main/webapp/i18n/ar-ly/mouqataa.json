@@ -1,0 +1,23 @@
+
+{
+    "rimAnnoceApp": {
+        "mouqataa" : {
+            "home": {
+                "title": "Mouqataas",
+                "createLabel": "Create a new Mouqataa",
+                "createOrEditLabel": "Create or edit a Mouqataa"
+            },
+            "created": "A new Mouqataa is created with identifier {{ param }}",
+            "updated": "A Mouqataa is updated with identifier {{ param }}",
+            "deleted": "A Mouqataa is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Mouqataa {{ id }}?"
+            },
+            "detail": {
+                "title": "Mouqataa"
+            },
+            "mouqataaName": "Mouqataa Name",
+            "wilaya": "Wilaya"
+        }
+    }
+}

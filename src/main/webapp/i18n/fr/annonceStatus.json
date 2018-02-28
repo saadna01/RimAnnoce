@@ -1,0 +1,10 @@
+{
+    "rimAnnoceApp": {
+        "AnnonceStatus" : {
+            "null": "",
+            "PENDING": "PENDING",
+            "CANCELED": "CANCELED",
+            "VALIDATED": "VALIDATED"
+        }
+    }
+}

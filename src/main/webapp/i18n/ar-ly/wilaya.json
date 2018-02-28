@@ -1,0 +1,22 @@
+
+{
+    "rimAnnoceApp": {
+        "wilaya" : {
+            "home": {
+                "title": "Wilayas",
+                "createLabel": "Create a new Wilaya",
+                "createOrEditLabel": "Create or edit a Wilaya"
+            },
+            "created": "A new Wilaya is created with identifier {{ param }}",
+            "updated": "A Wilaya is updated with identifier {{ param }}",
+            "deleted": "A Wilaya is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Wilaya {{ id }}?"
+            },
+            "detail": {
+                "title": "Wilaya"
+            },
+            "wilayaName": "Wilaya Name"
+        }
+    }
+}

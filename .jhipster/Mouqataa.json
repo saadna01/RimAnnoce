@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "wilaya",
+            "otherEntityName": "wilaya",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "mouqataaName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180228110241",
+    "entityTableName": "mouqataa",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

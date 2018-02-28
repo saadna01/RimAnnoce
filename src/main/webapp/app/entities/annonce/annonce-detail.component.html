@@ -1,0 +1,79 @@
+
+<div *ngIf="annonce">
+    <h2><span jhiTranslate="rimAnnoceApp.annonce.detail.title">Annonce</span> {{annonce.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.title">Title</span></dt>
+        <dd>
+            <span>{{annonce.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.details">Details</span></dt>
+        <dd>
+            <span>{{annonce.details}}</span>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.photo1">Photo 1</span></dt>
+        <dd>
+            <div *ngIf="annonce.photo1">
+                <a (click)="openFile(annonce.photo1ContentType, annonce.photo1)" jhiTranslate="entity.action.open">open</a>
+                {{annonce.photo1ContentType}}, {{byteSize(annonce.photo1)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.photo2">Photo 2</span></dt>
+        <dd>
+            <div *ngIf="annonce.photo2">
+                <a (click)="openFile(annonce.photo2ContentType, annonce.photo2)" jhiTranslate="entity.action.open">open</a>
+                {{annonce.photo2ContentType}}, {{byteSize(annonce.photo2)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.photo3">Photo 3</span></dt>
+        <dd>
+            <div *ngIf="annonce.photo3">
+                <a (click)="openFile(annonce.photo3ContentType, annonce.photo3)" jhiTranslate="entity.action.open">open</a>
+                {{annonce.photo3ContentType}}, {{byteSize(annonce.photo3)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.prix">Prix</span></dt>
+        <dd>
+            <span>{{annonce.prix}}</span>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.date">Date</span></dt>
+        <dd>
+            <span>{{annonce.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'rimAnnoceApp.AnnonceStatus.' + annonce.status}}">{{annonce.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.mouqataa">Mouqataa</span></dt>
+        <dd>
+            <div *ngIf="annonce.mouqataaId">
+                <a [routerLink]="['/mouqataa', annonce.mouqataaId]">{{annonce.mouqataaId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.categorie">Categorie</span></dt>
+        <dd>
+            <div *ngIf="annonce.categorieId">
+                <a [routerLink]="['/categorie', annonce.categorieId]">{{annonce.categorieId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rimAnnoceApp.annonce.user">User</span></dt>
+        <dd>
+            {{annonce.userId}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'annonce/'+ annonce.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
