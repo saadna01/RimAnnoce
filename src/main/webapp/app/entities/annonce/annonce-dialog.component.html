@@ -1,0 +1,130 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAnnonceLabel" jhiTranslate="rimAnnoceApp.annonce.home.createOrEditLabel">Create or edit a Annonce</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!annonce.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="annonce.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="annonce.title" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.details" for="field_details">Details</label>
+            <input type="text" class="form-control" name="details" id="field_details"
+                [(ngModel)]="annonce.details" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.photo1" for="field_photo1">Photo 1</label>
+            <div>
+                <div *ngIf="annonce.photo1" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(annonce.photo1ContentType, annonce.photo1)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{annonce.photo1ContentType}}, {{byteSize(annonce.photo1)}}</span>
+                    <button type="button" (click)="annonce.photo1=null;annonce.photo1ContentType=null;"
+                            class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_photo1" (change)="setFileData($event, annonce, 'photo1', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="photo1" id="field_photo1"
+                [(ngModel)]="annonce.photo1" />
+            <input type="hidden" class="form-control" name="photo1ContentType" id="field_photo1ContentType"
+                [(ngModel)]="annonce.photo1ContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.photo2" for="field_photo2">Photo 2</label>
+            <div>
+                <div *ngIf="annonce.photo2" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(annonce.photo2ContentType, annonce.photo2)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{annonce.photo2ContentType}}, {{byteSize(annonce.photo2)}}</span>
+                    <button type="button" (click)="annonce.photo2=null;annonce.photo2ContentType=null;"
+                            class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_photo2" (change)="setFileData($event, annonce, 'photo2', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="photo2" id="field_photo2"
+                [(ngModel)]="annonce.photo2" />
+            <input type="hidden" class="form-control" name="photo2ContentType" id="field_photo2ContentType"
+                [(ngModel)]="annonce.photo2ContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.photo3" for="field_photo3">Photo 3</label>
+            <div>
+                <div *ngIf="annonce.photo3" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(annonce.photo3ContentType, annonce.photo3)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{annonce.photo3ContentType}}, {{byteSize(annonce.photo3)}}</span>
+                    <button type="button" (click)="annonce.photo3=null;annonce.photo3ContentType=null;"
+                            class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_photo3" (change)="setFileData($event, annonce, 'photo3', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="photo3" id="field_photo3"
+                [(ngModel)]="annonce.photo3" />
+            <input type="hidden" class="form-control" name="photo3ContentType" id="field_photo3ContentType"
+                [(ngModel)]="annonce.photo3ContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.prix" for="field_prix">Prix</label>
+            <input type="number" class="form-control" name="prix" id="field_prix"
+                [(ngModel)]="annonce.prix" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.date" for="field_date">Date</label>
+            <div class="d-flex">
+                <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="annonce.date"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="annonce.status" id="field_status" >
+                <option value="PENDING">{{'rimAnnoceApp.AnnonceStatus.PENDING' | translate}}</option>
+                <option value="CANCELED">{{'rimAnnoceApp.AnnonceStatus.CANCELED' | translate}}</option>
+                <option value="VALIDATED">{{'rimAnnoceApp.AnnonceStatus.VALIDATED' | translate}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.mouqataa" for="field_mouqataa">Mouqataa</label>
+            <select class="form-control" id="field_mouqataa" name="mouqataa" [(ngModel)]="annonce.mouqataaId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="mouqataaOption.id" *ngFor="let mouqataaOption of mouqataas; trackBy: trackMouqataaById">{{mouqataaOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.categorie" for="field_categorie">Categorie</label>
+            <select class="form-control" id="field_categorie" name="categorie" [(ngModel)]="annonce.categorieId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="categorieOption.id" *ngFor="let categorieOption of categories; trackBy: trackCategorieById">{{categorieOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rimAnnoceApp.annonce.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="annonce.userId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

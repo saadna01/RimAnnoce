@@ -42,6 +42,10 @@ public class CacheConfiguration {
             cm.createCache(mr.rimannonce.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(mr.rimannonce.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(mr.rimannonce.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(mr.rimannonce.domain.Wilaya.class.getName(), jcacheConfiguration);
+            cm.createCache(mr.rimannonce.domain.Mouqataa.class.getName(), jcacheConfiguration);
+            cm.createCache(mr.rimannonce.domain.Categorie.class.getName(), jcacheConfiguration);
+            cm.createCache(mr.rimannonce.domain.Annonce.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,43 @@
+
+entity Wilaya {
+	wilayaName String
+}
+
+entity Mouqataa {
+	mouqataaName String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Categorie {
+	name String,
+}
+entity Annonce {
+	title String,
+	details String,
+	photo1 Blob,
+    photo2 Blob,
+    photo3 Blob,
+	prix Double,
+    date Instant,
+    status AnnonceStatus
+}
+
+enum AnnonceStatus {
+    PENDING, 
+    CANCELED, VALIDATED
+}
+
+relationship ManyToOne {
+	Mouqataa{wilaya} to Wilaya
+    Annonce{mouqataa} to Mouqataa
+    Annonce{categorie} to Categorie
+    Annonce{user} to User
+}
+
+paginate Annonce with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl

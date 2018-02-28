@@ -1,0 +1,32 @@
+
+{
+    "rimAnnoceApp": {
+        "annonce" : {
+            "home": {
+                "title": "Annonces",
+                "createLabel": "Créer un nouveau Annonce",
+                "createOrEditLabel": "Créer ou éditer un Annonce"
+            },
+            "created": "Un nouveau Annonce a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Annonce avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Annonce avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Annonce {{ id }} ?"
+            },
+            "detail": {
+                "title": "Annonce"
+            },
+            "title": "Title",
+            "details": "Details",
+            "photo1": "Photo 1",
+            "photo2": "Photo 2",
+            "photo3": "Photo 3",
+            "prix": "Prix",
+            "date": "Date",
+            "status": "Status",
+            "mouqataa": "Mouqataa",
+            "categorie": "Categorie",
+            "user": "User"
+        }
+    }
+}
